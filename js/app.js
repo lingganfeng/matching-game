@@ -29,6 +29,10 @@ function shuffle(array) {
     return array;
 }
 
+let cardShuffle = shuffle(cards);
+$.each(cardShuffle,function(index,value){
+	$('.deck').append(value);
+})
 
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
