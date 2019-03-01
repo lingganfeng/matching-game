@@ -40,16 +40,34 @@ function initGame(){
 initGame()
 
 deckElm.addEventListener('click',function(event){
-  console.log(event.target.className)
   let target = event.target
-  target.className = "card open show";
 
-  openedCards.push(target)
-  if(openedCards.length === 2){
-    console.log('2')
-    opnedCards = [];
+  if(target.className.includes('card')){
+    target.className = "card open show";
+
+    openedCards.push(target)
+    if(openedCards.length === 2){
+      console.log('2')
+
+      let card_1 = openedCards[0]
+      let card_2 = openedCards[1]
+
+      //匹配
+      if(card_1.firstElementChild.className == card_2.firstElementChild.className){
+        card_1.className = 'card match'
+        card_2.className = 'card match'
+      } else {//不匹配
+        setTimeout(function(){
+          card_1.className = 'card'
+          card_2.className = 'card'
+        }, 200)
+      }
+
+      openedCards = []
+    }
   }
 })
+
 
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
