@@ -26,6 +26,10 @@ function shuffle(array) {
     return array;
 }
 
+function resetGame(array){
+  var
+}
+
 let deckElm = document.getElementsByClassName('deck')[0]
 
 function initGame(){
@@ -49,7 +53,7 @@ deckElm.addEventListener('click',function(event){
 
     openedCards.push(target)
     if(openedCards.length === 2){
-      console.log('2')
+    //  console.log('2')
 
       let card_1 = openedCards[0]
       let card_2 = openedCards[1]
@@ -67,8 +71,15 @@ deckElm.addEventListener('click',function(event){
 
       openedCards = []
     }
+    if(openedCards.length === 16){
+
+    }
   }
+
+  //
+
 })
+
 
 
 /*
@@ -83,7 +94,7 @@ deckElm.addEventListener('click',function(event){
  */
 
 //计时器（来源：https://www.jb51.net/article/105783.htm)
- var hour,minute,second;//时 分 秒
+/**
  hour=minute=second=0;//初始化
  var millisecond=0;//毫秒
  var int;
@@ -126,3 +137,4 @@ deckElm.addEventListener('click',function(event){
  {
    window.clearInterval(int);
  }
+*/
