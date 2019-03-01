@@ -1,10 +1,7 @@
 /*
  * 创建一个包含所有卡片的数组
  */
- let cards = [];
- for(let i = 0; i < $('.card').length; i++){
-     cards.push($('.card')[i]);
- }
+ let cards = Array.from(document.getElementsByClassName('card'))
 
 
 /*
