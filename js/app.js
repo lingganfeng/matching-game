@@ -26,10 +26,10 @@ function shuffle(array) {
     return array;
 }
 
+let deckElm = document.getElementsByClassName('deck')[0]
+
 function initGame(){
   let cardShuffle = shuffle(cards);
-
-  let deckElm = document.getElementsByClassName('deck')[0]
   deckElm.innerHTML = '';
   cardShuffle.map(function(card){
     console.log(card)
@@ -39,7 +39,17 @@ function initGame(){
 
 initGame()
 
+deckElm.addEventListener('click',function(event){
+  console.log(event.target.className)
+  let target = event.target
+  target.className = "card open show";
 
+  openedCards.push(target)
+  if(openedCards.length === 2){
+    console.log('2')
+    opnedCards = [];
+  }
+})
 
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
