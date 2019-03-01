@@ -26,10 +26,20 @@ function shuffle(array) {
     return array;
 }
 
-let cardShuffle = shuffle(cards);
-$.each(cardShuffle,function(index,value){
-	$('.deck').append(value);
-})
+function initGame(){
+  let cardShuffle = shuffle(cards);
+
+  let deckElm = document.getElementsByClassName('deck')[0]
+  deckElm.innerHTML = '';
+  cardShuffle.map(function(card){
+    console.log(card)
+    deckElm.appendChild(card)
+  })
+}
+
+initGame()
+
+
 
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
