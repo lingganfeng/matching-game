@@ -39,6 +39,8 @@ function initGame(){
 
 initGame()
 
+let openedCards = []
+
 deckElm.addEventListener('click',function(event){
   let target = event.target
 
@@ -60,7 +62,7 @@ deckElm.addEventListener('click',function(event){
         setTimeout(function(){
           card_1.className = 'card'
           card_2.className = 'card'
-        }, 200)
+        }, 300)
       }
 
       openedCards = []
