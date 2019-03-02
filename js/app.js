@@ -1,6 +1,10 @@
 /*
  * 创建一个包含所有卡片的数组
  */
+
+//很多思路都是Udacity一对一的老师提供的，对于JS的编程我还有很长的路要走
+//还参考了 Yahya Elharony's https://www.youtube.com/watch?v=G8J13lmApkQ 和 https://codepen.io/csalcedo815/pen/rKjXzG?editors=1000#0
+
  let cards = Array.from(document.getElementsByClassName('card'))
 
 
@@ -26,9 +30,6 @@ function shuffle(array) {
     return array;
 }
 
-function resetGame(array){
-  var
-}
 
 let deckElm = document.getElementsByClassName('deck')[0]
 
@@ -36,12 +37,17 @@ function initGame(){
   let cardShuffle = shuffle(cards);
   deckElm.innerHTML = '';
   cardShuffle.map(function(card){
-    console.log(card)
+    //console.log(card)
     deckElm.appendChild(card)
   })
 }
 
 initGame()
+
+let restartButton = document.querySelector('.restart')
+restartButton.addEventListener('click',function(e){
+  window.location.reload(true);
+})
 
 let openedCards = []
 
@@ -68,11 +74,7 @@ deckElm.addEventListener('click',function(event){
           card_2.className = 'card'
         }, 300)
       }
-
       openedCards = []
-    }
-    if(openedCards.length === 16){
-
     }
   }
 
