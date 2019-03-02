@@ -49,17 +49,7 @@ restartButton.addEventListener('click',function(e){
   window.location.reload(true);
 })
 
-
-let restartButton1 = document.querySelector('.newGameBtn')
-restartButton1.addEventListener('click',function(e){
-  window.location.reload(true);
-})
-
-//card match
-let openedCards = [];
-let matched = 0;
-let allCards = document.querySelectorAll('card');
-const popup = document.querySelector('.popup');
+let openedCards = []
 
 deckElm.addEventListener('click',function(event){
   let target = event.target
