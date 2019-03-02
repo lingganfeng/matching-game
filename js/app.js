@@ -195,10 +195,33 @@ function countMoves() {
   if (moves === 1) {
     startTimer();
   }
+  //set the rating
+  rating();
 }
 
 
 //Reset Moves
 function resetMoves() {
   movesContainer.innerHTML = 0;
+}
+
+//Rating
+const starsContainer = document.querySelector(".stars");
+  function rating() {
+    if (moves <= 15) {
+      starsContainer.innerHTML =
+      '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
+    } else if (moves > 15 && moves <= 20) {
+      starsContainer.innerHTML =
+      '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
+    } else {
+      starsContainer.innerHTML =
+      '<li><i class="fa fa-star"></i></li>';
+    }
+  }
+
+//reset Stars
+function resetStars() {
+  starsContainer.innerHTML =
+  '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
 }
