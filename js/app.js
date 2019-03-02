@@ -139,6 +139,49 @@ deckElm.addEventListener('click',function(event){
 */
 
 
+
+//Count Moves
+const movesContainer = document.querySelector(".moves");
+let moves = 0;
+function countMoves() {
+  moves++;
+  movesContainer.innerHTML = moves;
+  if (moves === 1) {
+    startTimer();
+  }
+  //set the rating
+  rating();
+}
+
+
+//Reset Moves
+function resetMoves() {
+  movesContainer.innerHTML = 0;
+}
+
+//Rating
+const starsContainer = document.querySelector(".stars");
+  function rating() {
+    if (moves <= 15) {
+      starsContainer.innerHTML =
+      '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
+    } else if (moves > 15 && moves <= 20) {
+      starsContainer.innerHTML =
+      '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
+    } else {
+      starsContainer.innerHTML =
+      '<li><i class="fa fa-star"></i></li>';
+    }
+  }
+
+//reset Stars
+function resetStars() {
+  starsContainer.innerHTML =
+  '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
+}
+
+
+
 /*
  * Timer
  */
@@ -186,42 +229,23 @@ function stopTimer() {
 }
 
 
-//Count Moves
-const movesContainer = document.querySelector(".moves");
-let moves = 0;
-function countMoves() {
-  moves++;
-  movesContainer.innerHTML = moves;
-  if (moves === 1) {
-    startTimer();
-  }
-  //set the rating
-  rating();
+/*
+*Game Over pop up
+*/
+
+function gameOver() {
+  popup.classList.remove("hide");
+  document.querySelector('.final-move').innerHTML = document.querySelector('.moves').innerHTML;
+  document.querySelector('.final-time').innerHTML = document.querySelector('.timer').innerHTML;
+  document.querySelector('.final-star').innerHTML = document.querySelector('.stars').innerHTML;
+
 }
 
-
-//Reset Moves
-function resetMoves() {
-  movesContainer.innerHTML = 0;
-}
-
-//Rating
-const starsContainer = document.querySelector(".stars");
-  function rating() {
-    if (moves <= 15) {
-      starsContainer.innerHTML =
-      '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
-    } else if (moves > 15 && moves <= 20) {
-      starsContainer.innerHTML =
-      '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
-    } else {
-      starsContainer.innerHTML =
-      '<li><i class="fa fa-star"></i></li>';
-    }
-  }
-
-//reset Stars
-function resetStars() {
-  starsContainer.innerHTML =
-  '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
+//close popup
+function closePopup() {
+  popup.classList.add("hide");
+  resetMoves();
+  resetTimer();
+  resetStars();
+  initGame();
 }
