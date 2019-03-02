@@ -26,7 +26,6 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
@@ -77,9 +76,6 @@ deckElm.addEventListener('click',function(event){
       openedCards = []
     }
   }
-
-  //
-
 })
 
 
@@ -154,27 +150,26 @@ let liveTimer,
 // Set the default value to the timer's container
 timerContainer.innerHTML = totalMinutes + ":"+ totalSeconds
 
- function startTimer() {
-    liveTimer = setInterval(function() {
-        // Increase the totalSeconds by 1
-        totalSeconds++;
-        // Update the HTML Container with the new time
-        timerContainer.innerHTML = totalMinutes + ":" + totalSeconds;
-        //Increase minutes when seconds equal 60
-        if(totalSeconds === 60) {
-          totalMinutes++;
-          totalSeconds = 0;
-          totalSeconds++;
-          // Update the HTML Container with the new time
-          timerContainer.innerHTML = totalMinutes + ":" + totalSeconds;
-        }
-        //stop timer when there are 8 matched pairs
-        if(openedCards.length === 16) {
-          stopTimer();
-          gameOver();
-        }
-
-    }, 1000);
+function startTimer() {
+  liveTimer = setInterval(function() {
+    // Increase the totalSeconds by 1
+    totalSeconds++;
+    // Update the HTML Container with the new time
+    timerContainer.innerHTML = totalMinutes + ":" + totalSeconds;
+    //Increase minutes when seconds equal 60
+    if(totalSeconds === 60) {
+      totalMinutes++;
+      totalSeconds = 0;
+      totalSeconds++;
+      // Update the HTML Container with the new time
+      timerContainer.innerHTML = totalMinutes + ":" + totalSeconds;
+    }
+    //stop timer when there are 8 matched pairs
+    if(openedCards.length === 16) {
+      stopTimer();
+      gameOver();
+    }
+  }, 1000);
 }
 
 //reset timer
@@ -188,4 +183,22 @@ function resetTimer() {
 
 function stopTimer() {
     clearInterval(liveTimer);
+}
+
+
+//Count Moves
+const movesContainer = document.querySelector(".moves");
+let moves = 0;
+function countMoves() {
+  moves++;
+  movesContainer.innerHTML = moves;
+  if (moves === 1) {
+    startTimer();
+  }
+}
+
+
+//Reset Moves
+function resetMoves() {
+  movesContainer.innerHTML = 0;
 }
