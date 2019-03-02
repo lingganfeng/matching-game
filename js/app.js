@@ -72,7 +72,7 @@ deckElm.addEventListener('click',function(event){
         setTimeout(function(){
           card_1.className = 'card'
           card_2.className = 'card'
-        }, 300)
+        }, 500)
       }
       openedCards = []
     }
@@ -96,7 +96,7 @@ deckElm.addEventListener('click',function(event){
  */
 
 //计时器（来源：https://www.jb51.net/article/105783.htm)
-/**
+/*
  hour=minute=second=0;//初始化
  var millisecond=0;//毫秒
  var int;
@@ -104,7 +104,7 @@ deckElm.addEventListener('click',function(event){
  {
    window.clearInterval(int);
    millisecond=hour=minute=second=0;
-   document.getElementById('timetext').value='00时00分00秒000毫秒';
+   document.getElementsByClassName('timer-container').value='00时00分00秒000毫秒';
  }
 
  function start()//开始
@@ -131,7 +131,7 @@ deckElm.addEventListener('click',function(event){
      minute=0;
      hour=hour+1;
    }
-   document.getElementById('timetext').value=hour+'时'+minute+'分'+second+'秒'+millisecond+'毫秒';
+   document.getElementByClassName('timer-container').value=hour+'时'+minute+'分'+second+'秒'+millisecond+'毫秒';
 
  }
 
@@ -139,4 +139,53 @@ deckElm.addEventListener('click',function(event){
  {
    window.clearInterval(int);
  }
+ 没法跟我前面的设置匹配，无法显示在页面上
 */
+
+
+/*
+ * Timer
+ */
+const timerContainer = document.querySelector(".timer");
+let liveTimer,
+    totalSeconds = "00";
+    totalMinutes = "00";
+
+// Set the default value to the timer's container
+timerContainer.innerHTML = totalMinutes + ":"+ totalSeconds
+
+ function startTimer() {
+    liveTimer = setInterval(function() {
+        // Increase the totalSeconds by 1
+        totalSeconds++;
+        // Update the HTML Container with the new time
+        timerContainer.innerHTML = totalMinutes + ":" + totalSeconds;
+        //Increase minutes when seconds equal 60
+        if(totalSeconds === 60) {
+          totalMinutes++;
+          totalSeconds = 0;
+          totalSeconds++;
+          // Update the HTML Container with the new time
+          timerContainer.innerHTML = totalMinutes + ":" + totalSeconds;
+        }
+        //stop timer when there are 8 matched pairs
+        if(openedCards.length === 16) {
+          stopTimer();
+          gameOver();
+        }
+
+    }, 1000);
+}
+
+//reset timer
+function resetTimer() {
+  timerContainer.innerHTML = "00:00";
+}
+
+/*
+* Stop Timer
+*/
+
+function stopTimer() {
+    clearInterval(liveTimer);
+}

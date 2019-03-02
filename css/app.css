@@ -107,3 +107,24 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/* Timer */
+
+.timer-container {
+  width: 40%;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  display: inline-flex;
+}
+
+.timer {
+  margin: auto;
+}
+
+.minutes {
+  padding-right: 4px;
+}
+
+.seconds {
+  padding-left: 4px;
+}
