@@ -29,7 +29,7 @@ function shuffle(array) {
     return array;
 }
 
-
+//card shuffle
 let deckElm = document.getElementsByClassName('deck')[0]
 
 function initGame(){
@@ -43,12 +43,23 @@ function initGame(){
 
 initGame()
 
+//refresh button
 let restartButton = document.querySelector('.restart')
 restartButton.addEventListener('click',function(e){
   window.location.reload(true);
 })
 
-let openedCards = []
+
+let restartButton1 = document.querySelector('.newGameBtn')
+restartButton1.addEventListener('click',function(e){
+  window.location.reload(true);
+})
+
+//card match
+let openedCards = [];
+let matched = 0;
+let allCards = document.querySelectorAll('card');
+const popup = document.querySelector('.popup');
 
 deckElm.addEventListener('click',function(event){
   let target = event.target
@@ -67,6 +78,7 @@ deckElm.addEventListener('click',function(event){
       if(card_1.firstElementChild.className == card_2.firstElementChild.className){
         card_1.className = 'card match'
         card_2.className = 'card match'
+        matched ++
       } else {//不匹配
         setTimeout(function(){
           card_1.className = 'card'
@@ -74,6 +86,7 @@ deckElm.addEventListener('click',function(event){
         }, 500)
       }
       openedCards = []
+      countMoves()
     }
   }
 })
@@ -208,7 +221,7 @@ function startTimer() {
       timerContainer.innerHTML = totalMinutes + ":" + totalSeconds;
     }
     //stop timer when there are 8 matched pairs
-    if(openedCards.length === 16) {
+    if(matched === 8) {
       stopTimer();
       gameOver();
     }
@@ -234,7 +247,7 @@ function stopTimer() {
 */
 
 function gameOver() {
-  popup.classList.remove("hide");
+  popup.classList.remove('hide');
   document.querySelector('.final-move').innerHTML = document.querySelector('.moves').innerHTML;
   document.querySelector('.final-time').innerHTML = document.querySelector('.timer').innerHTML;
   document.querySelector('.final-star').innerHTML = document.querySelector('.stars').innerHTML;
@@ -243,7 +256,7 @@ function gameOver() {
 
 //close popup
 function closePopup() {
-  popup.classList.add("hide");
+  popup.classList.add('hide');
   resetMoves();
   resetTimer();
   resetStars();
