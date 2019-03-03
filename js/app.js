@@ -72,7 +72,7 @@ deckElm.addEventListener('click',function(event){
       let card_2 = openedCards[1]
 
       //匹配
-      if(card_1.firstElementChild.className == card_2.firstElementChild.className){
+      if (card_1.firstElementChild !== card_2.firstElementChild && card_1.firstElementChild.className == card_2.firstElementChild.className){
         card_1.className = 'card match'
         card_2.className = 'card match'
         matched ++
