@@ -61,8 +61,20 @@ const popup = document.querySelector('.popup')
 deckElm.addEventListener('click',function(event){
   let target = event.target
 
+  if(target.className.includes('show') || target.className.includes('match')) {
+      console.log('show or match')
+    //如果已经打开或者匹配了, 就中止后续的操作
+      return;
+  }
+
   if(target.className.includes('card')){
     target.className = "card open show";
+
+//  if(target.className.includes('show') || target.className.includes('match')) {
+//    console.log('show or match')
+  //如果已经打开或者匹配了, 就中止后续的操作
+//    return;
+
 
     openedCards.push(target)
     if(openedCards.length === 2){
@@ -70,6 +82,8 @@ deckElm.addEventListener('click',function(event){
 
       let card_1 = openedCards[0]
       let card_2 = openedCards[1]
+
+
 
       //匹配
       if (card_1.firstElementChild !== card_2.firstElementChild && card_1.firstElementChild.className == card_2.firstElementChild.className){
